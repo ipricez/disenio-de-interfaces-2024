@@ -61,4 +61,16 @@ html{
     /* display:inline-block; */
     float:left;
     line-height: 40px;
+    border-right: 1px solid black;
+}
+.list__item a{
+    color: var(--color-letter);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/* .navbar__list > li:first-child{
+    border-left: 1px solid black;
+} */
+.list__item:first-child {
+    border-left: 1px solid black;
 }
