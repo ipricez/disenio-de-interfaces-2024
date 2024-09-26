@@ -51,3 +51,8 @@ html{
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     /* box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.2); */
 }
+.navbar__list{
+    /* display: flex;
+    flex-direction: row; */
+    display: inline-block;
+}
