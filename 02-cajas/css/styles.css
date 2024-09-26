@@ -54,5 +54,11 @@ html{
 .navbar__list{
     /* display: flex;
     flex-direction: row; */
-    display: inline-block;
+    margin: 0px auto;
+    width: 95%;
+}
+.list__item{
+    /* display:inline-block; */
+    float:left;
+    line-height: 40px;
 }
