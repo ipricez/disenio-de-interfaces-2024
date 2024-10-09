@@ -297,3 +297,20 @@ Color aplicado */
         transform: rotate(0deg);
     }
 }
+
+.box__container{
+    position: absolute;
+    height: 800px;
+    width: 500px;
+    border: 1px solid black;
+}
+.box__free--3{
+    background-color: green;
+    top: 500px;
+    /* left: 200px; */
+    margin-left: 200px;
+}
+.box__free--4{
+    background-color: royalblue;
+    bottom: 50px;
+}
