@@ -15,12 +15,8 @@
 }
 .container__header{
     /* Añadir aquí Flex y Align y/o justify */
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-rows: 1fr 5fr;
 
 
     height: 120px;
@@ -29,7 +25,6 @@
 
 .container__logo{
     /* Añadir aquí Flex */
-    flex-basis: 60%;
 
 
 
@@ -50,7 +45,6 @@
 
 .header__menu{
     /* Añadir aquí Flex */
-    /* flex-basis: 35%; */
 
 
 
@@ -58,9 +52,6 @@
 }
 .menu__list{
     /* Añadir aquí Flex y Align y/o justify */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     height: 100%;
     list-style: none;
@@ -84,20 +75,17 @@
 /* contenido */
 .content{
     /* Añadir aquí Flex y Align y/o justify */
-    display: flex;
-    flex-direction: row;
+
+    /* width: 1200px; */
 
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.content__projects{
+/* .content__projects{ */
     /* Añadir aquí Flex y Align y/o justify */
-
-
-}
+/* } */
 .projects__project{
     /* Añadir aquí Flex */
-
 
     margin-bottom: 25px;
     margin-right: 20px;
@@ -133,7 +121,6 @@
 /* barra lateral */
 .content__lateral{
     /* Añadir aquí Flex */
-
 
     margin-right: 30px;
     padding: 15px;
@@ -180,6 +167,8 @@
 /* Footer */
 .content__footer{
     /* Añadir aquí Flex y Align y/o justify */
+    /* display: flex; */
+
 
 
     height: 120px;
@@ -187,7 +176,7 @@
 }
 .footer__logoFooter{
     /* Añadir aquí Flex y order */
-
+    /* display: flex; */
 
     padding: 10px;
     margin-left: 20px;
