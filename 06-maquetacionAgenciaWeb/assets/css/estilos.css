@@ -54,6 +54,10 @@ No es necesario flotar los elementos (ni con float, flex, grid, grid-areas */
 }
 .menu__navbar{
     /* Flex + aling/justify */
+    display: grid;
+    grid-template-columns: 1fr 0fr 0fr;
+    align-items: center;
+    width: 100%;
 
 }
 
@@ -62,14 +66,22 @@ No es necesario flotar los elementos (ni con float, flex, grid, grid-areas */
 }
 .nav__list{
     /* Flex + aling/justify */
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
 }
 .nav__item{
     /* position */
+    position: relative; /* con esto no alteramos la posicion natural de los elementos
+    y si incluimos algo dentro (pseudoelemento after, before,...),
+    se queda dentro de los límites de mi caja
 
+    /* */
     margin: 0 2.4rem;
 }
 .nav__title{
     /* position */
+    position: relative;
+    display: inline-block;
     
     line-height: 6rem;
     font-weight: 500;
@@ -85,8 +97,11 @@ No es necesario flotar los elementos (ni con float, flex, grid, grid-areas */
 
 /* efecto */
 .nav__title:hover{
-
+    color: var(--color-primary);
+    transform: scale(1.1);
 }
+
+/* pseudoelemento para el menu */
 
 
 .nav__submenu{
