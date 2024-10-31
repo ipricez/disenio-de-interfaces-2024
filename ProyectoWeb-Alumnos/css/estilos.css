@@ -31,7 +31,7 @@
     --mx-width: 1240px;
     --color-primary: #37bcf9;
     --color-secondary: #fff;
-    --color-backgroung: #ccc;
+    --color-background: #ccc;
     --color-bg: black;
     --color-text-white: white;
     --color-text-title: #00538c;
@@ -84,6 +84,7 @@ body{
     cursor: pointer;
     overflow: hidden;
     /* transición */
+    transition: all 500ms;
 }
 
 .header__logo h3{
@@ -92,15 +93,31 @@ body{
     font-size: 40px;
     margin-right: 65px;
     /* transición */
+    transition: all 500ms;
 }
 
 /* efecto con keyframes - hover en el Logo */
+.header__logo:hover h3{
+    animation: mueveDerecha 2s;
+}
 
+@keyframes mueveDerecha {
+    from{
+        transform: translateX(200%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
 
 /* efecto hover en Logo */
+.header__logo:hover{
+    border-radius: 5px;
+    background-color: var(--color-background);
+    color: black;
+}
 
-
-.header__logo .logo__gear{
+.logo__gear{
     display: block;
     float: left;
     font-size: 30px;
@@ -108,34 +125,61 @@ body{
     margin-left: 26px;
 
     /* A la hora de crear animación */
+    animation-name: giroRueda;
+    animation-duration: 4s;
+    /* animation-timing-function: ease-in-out; */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 
+    /* equivalente a:
+        animation: girarRueda a 4s linear infinite */
 }
 
 /* animación logo rueda */
-
+@keyframes giroRueda {
+    100%{
+        transform: rotate(360deg);
+    }    
+}
 
 /* efecto de desaparece y vuelve keyframes */
+.header__logo:hover .logo__gear{
+    animation: vieneAbajo 2s;
+}
 
+@keyframes vieneAbajo {
+    from{
+        transform: translateY(200%) rotate(0deg);
+    }
+    to{
+        transform: translateY(0%) rotate(360deg);
+    }
+}
 
 .header__menu{
     float: right;
     height: 70px;
     background: transparent;
 }
-.menu__list li{
+.list__item{
     font-size: 24px;
     display: inline-block; /* puedo flotar con el float o bien mediante inline-block. Funcionaría igual */
     margin: 0px 20px 0px 20px;
     letter-spacing: 1px;
     line-height: 70px;
 }
-.menu__list li a{
+.list__item a{
     display:block;
     color: var(--color-text-white);
     text-decoration: none;
     /* transición */
+    transition: all 300ms linear;
 }
 /* hover */
+.list__item a:hover{
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
 
 /* Maquetando el Banner */
 .content__banner{
@@ -148,9 +192,18 @@ body{
     margin: 20px auto;
     overflow: hidden;
     /* animación */
+    animation: fondoBanner 10s infinite linear;
 }
 
 /* keyframes */
+@keyframes fondoBanner {
+        0% {
+            background-position: 0px 0px;
+        }
+        100% {
+            background-position: -200px -200px;
+        }
+}
 
 .content__banner h1{
     display: block;
@@ -162,26 +215,76 @@ body{
     text-shadow: 2px 2px 1px var(--color-bg);
     margin: 10px auto;
     /* animación */
+    animation: muestraTitulo 10s linear;
 }
 
 /* keyframes */
+@keyframes muestraTitulo {
+    0%{
+        transform: translateX(-200%) scale(4);
+        opacity: 0.5;;
+        
+    }
+    40%{
+        transform: translateX(200%);
+
+    }
+    65%{
+        transform: translateX(-200%) scale(4);
+        opacity: 0.2;
+    }
+    100%{
+        transform: translateX(0%) scale(1);
+    }
+}
 
 /* Tarjetas */
 .cards__card{
     float: left;
     width: 200px;
     height: 260px;
-    border: 1px solid var(--color-backgroung);
+    border: 1px solid var(--color-background);
     box-shadow: 1px 1px 4px var(--color-box-shadow);
     overflow: hidden;
     margin: 22px;
     margin-top: 40px;
     cursor: pointer;
     /* transicion */
+    transition: all 500ms;
 
 }
 /*efecto hover en las cartas */
-
+.cards__card:hover{
+    background-color: var(--color-bg);
+}
+.cards__card:hover .card__icon{
+    font-size: 60px;
+    color: var(--color-primary);
+    animation: mueveIcono 500ms linear;
+}
+@keyframes mueveIcono {
+    from{
+        transform: translateY(-200%);
+    }
+}
+.cards__card:hover .card__category{
+    color: white;
+    animation: mueveCategoria 500ms linear;
+}
+@keyframes mueveCategoria {
+    from{
+        transform: translateY(-300%);
+    }
+}
+.cards__card:hover .card__description{
+    color: white;
+    animation: mueveDescription 500ms linear;
+}
+@keyframes mueveDescription {
+    from{
+        transform: translateX(-200%);
+    }
+}
 
 .cards__card:last-child{
     margin-right: 0px;
@@ -240,7 +343,7 @@ body{
     width: auto;
     height: 45px;
     line-height: 49px;
-    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
+    background: url("../img/pxgray.png"), var(--color-text-white);
     box-shadow: 0px 1px 0px var(--color-box-shadow2), 1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2), 3px 4px 0px var(--color-box-shadow2);
     font-size: 30px;
     font-family: "BebasNeue";
@@ -259,9 +362,9 @@ body{
     height: 30px;
     margin: 10px auto;
     background-color: var(--color-text-white);
-    border: 1px solid var(--color-backgroung);
+    border: 1px solid var(--color-background);
     border-radius: 5px;
-    box-shadow: 1px 1px 4px var(--color-backgroung) inset;
+    box-shadow: 1px 1px 4px var(--color-background) inset;
 }
 
 .lateral__search input[type="text"]{
@@ -271,7 +374,7 @@ body{
     padding-left: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--color-backgroung);
+    color: var(--color-background);
     /* transición para el focus */
 }
 /* obtengo foco en input[type="text"] */
@@ -284,7 +387,7 @@ body{
     font-size: 16px;
     background-color: transparent; /* para que no tenga fondo */
     border:none; /* para que se integre con el campo en sí */
-    border-left: 1px solid var(--color-backgroung);
+    border-left: 1px solid var(--color-background);
     color: var(--color-focus);
     padding-left: 6px;
 }
@@ -305,8 +408,8 @@ body{
     margin-top: 20px;
     width: 82%;
     height: 30px;
-    border: 1px solid var(--color-backgroung);
-    box-shadow: 1px 1px 1px var(--color-backgroung) inset;
+    border: 1px solid var(--color-background);
+    box-shadow: 1px 1px 1px var(--color-background) inset;
     border-radius: 5px;
     padding-left: 30px;
     color: var(--color-gray);
@@ -392,9 +495,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
-    text-shadow: 0px 0px 1px var(--color-backgroung);
+    text-shadow: 0px 0px 1px var(--color-background);
     border: 3px solid var(--color-text-white);
-    box-shadow: 0px 0px 4px var(--color-backgroung);
+    box-shadow: 0px 0px 4px var(--color-background);
     background: #F4F7FE;
     position: absolute;
     padding: 5px;
@@ -425,7 +528,7 @@ body{
     font-size: 40px;
     font-weight: normal;
     letter-spacing: 2px;
-    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
+    background: url("../img/pxgray.png"), var(--color-text-white);
     box-shadow: 0px 1px 0px var(--color-box-shadow2), 1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2), 3px 4px 0px var(--color-box-shadow2);
     margin: 0px auto;
     margin-top: 20px;
@@ -435,7 +538,7 @@ body{
 .articles__article{
     width: 98%;
     height: auto;
-    border: 1px solid var(--color-backgroung);
+    border: 1px solid var(--color-background);
     margin: 40px auto;
     padding: 10px;
     font-family: "TrebuchetMS";
@@ -524,7 +627,7 @@ body{
 }
 .footer__title{
     display: block;
-    background: url("../img/pxvar(--color-gray).png"), var(--color-text-white);
+    background: url("../img/pxgray.png"), var(--color-text-white);
     height: 50px;
     letter-spacing: 2px;
     text-align: center;
@@ -543,7 +646,7 @@ body{
 .footer__list li{
     margin-top: 10px;
     padding: 5px;
-    border-bottom: 1px solid var(--color-backgroung);
+    border-bottom: 1px solid var(--color-background);
 }
 .footer__list li a{
     display: block;
