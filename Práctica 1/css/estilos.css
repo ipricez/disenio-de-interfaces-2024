@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "TrebuchetMS";
+  src: url("../fonts/TrebuchetMS.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../fonts/BebasNeue.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* https://www.fontsquirrel.com/fonts/web-symbols */
+@font-face {
+  font-family: "WebSymbolsRegular";
+  src: url("../fonts/websymbols-regular-webfont.eot");
+  src: url("../fonts/websymbols-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/websymbols-regular-webfont.woff") format("woff"),
+    url("../fonts/websymbols-regular-webfont.ttf") format("truetype"),
+    url("../fonts/websymbols-regular-webfont.svg#WebSymbolsRegular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Iniciamos estilos personalizados  */
+/* Definición Variables
+ definimos familia de fuente que voy a utilizar */
+:root {
+  --mx-width: 1240px; /* en la estrategia de Grid / Flex revisar este punto */
+  --color-primary: #37bcf9;
+  --color-secondary: #fff;
+  --color-background: #ccc;
+  --color-bg: black;
+  --color-text-white: white;
+  --color-text-title: #00538c;
+  --color-grey: gray;
+  --color-box-shadow: #ddd;
+  --color-box-shadow2: #393d3f;
+  --color-focus: #555;
+}
+
+/* Estilos Generales */
+html {
+  /* para un tema de accesibilidad y poder trabajar con rem */
+  /* font-size: 10px; */
+  /* Accesibilidad,... si el usuario nos cambia el tamaño de fuente */
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+body {
+  background: url("../img/pattern.png");
+}
+/* wrap queremos que los elementos "hijos" dispongan de estos estilos */
+.header__wrap,
+.content__wrap,
+.footer__wrap {
+  /* le asignamo 1200 para vista de escritorio */
+  width: var(--mx-width);
+  margin: 0px auto; /* centra un elemento */
+}
+
+.logo__gear,
+.card__icon,
+.search__icon,
+.aside-box__icon,
+.social__icon {
+  font-family: "WebSymbolsRegular";
+}
+
+/* Cabecera */
+.header{
+  padding: 10px;
+  border: 1px dotted red;
+}
+.header__wrap{
+  display: grid;
+  grid-template-areas: "logo menu";
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__logo{
+  grid-area: logo;
+}
+.header__menu{
+  grid-area: menu;
+}
+.header__menu .menu__list{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.header__menu .list__item{
+  margin-left: 20px;
+}
