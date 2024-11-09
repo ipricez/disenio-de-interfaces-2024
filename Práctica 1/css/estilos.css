@@ -41,6 +41,14 @@
   --color-box-shadow: #ddd;
   --color-box-shadow2: #393d3f;
   --color-focus: #555;
+
+  --color-paco0: #8cb8b1;
+  --color-paco1: #75a59e;
+  --color-paco2: #588e7f;
+  --color-paco3: #3f775f;
+  --color-paco4: #317c53;
+  --color-paco5: #2a9d58;
+  --color-paco6: #2cbe56;
 }
 
 /* Estilos Generales */
@@ -52,7 +60,8 @@ html {
   overflow-x: hidden;
 }
 body {
-  background: url("../img/pattern.png");
+  background-color: var(--color-paco1);
+  background-image: url("../img/pattern.png");
 }
 /* wrap queremos que los elementos "hijos" dispongan de estos estilos */
 .header__wrap,
@@ -85,7 +94,7 @@ body {
 }
 .header__logo {
   height: 50px;
-  background-color: var(--color-primary);
+  background-color: var(--color-paco5);
   text-align: center;
   margin-top: 8px;
   margin-left: 20px;
@@ -94,6 +103,8 @@ body {
   overflow: hidden;
   /* transición */
   transition: all 500ms;
+
+  color: white;
 }
 
 .header__logo h3 {
@@ -118,16 +129,16 @@ body {
 /* efecto hover en Logo */
 .header__logo:hover {
   border-radius: 5px;
-  background-color: var(--color-background);
-  color: black;
+  background-color: black;
+  color: var(--color-paco6);
 }
 
 .logo__gear {
   display: block;
-  float: left; /* en la estrategia de Grid / Flex revisar este punto */
+  float: left;
   font-size: 30px;
   margin-top: 4px;
-  margin-left: 26px; /* en la estrategia de Grid / Flex revisar este punto */
+  margin-left: 26px;
 
   /* A la hora de crear animación */
   animation-name: giroRueda;
@@ -141,10 +152,22 @@ body {
 
 /* animación logo rueda */
 @keyframes giroRueda {
-  100% {
-    /* transform: rotate(360deg); */
-    transform: rotateZ(360deg);
+  0% {
+    transform: translateX(0px);
   }
+  25%{
+    transform: translateX(30px);
+  }
+  50%{
+    transform: translateX(0px);
+  }
+  75% {
+    transform: translateX(-30px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+  
 }
 
 /* efecto de desaparece y vuelve keyframes */
@@ -153,7 +176,7 @@ body {
 }
 @keyframes desdeAbajo {
   from {
-    transform: translateY(200%) rotateZ(0deg);
+    transform: translateY(200%) translateX(-60px) rotateZ(0deg);
   }
   to {
     transform: translateY(0%) rotateZ(360deg);
@@ -185,7 +208,7 @@ body {
 }
 /* hover */
 .list__item a:hover {
-  color: var(--color-primary);
+  color: var(--color-paco6);
   transform: scale(1.2);
 }
 
@@ -194,7 +217,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   height: 100px;
-  border: 10px solid var(--color-text-white);
+  border: 10px solid black;
   box-shadow: 0px 0px 2px var(--color-gray);
   background: url("../img/backbaner.png");
   background-position: -200px -200px;
@@ -207,7 +230,7 @@ body {
 /* keyframes */
 @keyframes fondoBanner {
   0% {
-    background-position: 0px 0px;
+    background-position: -130px -30px;
   }
   100% {
     background-position: -200px -200px;
@@ -253,23 +276,23 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .cards__card {
-  /* en la estrategia de Grid / Flex revisar este punto */
-  /* float: left;  */
-  /* width: 200px; en la estrategia de Grid / Flex revisar este punto */
-  /* height: 260px; */
-  border: 1px solid var(--color-background);
-  box-shadow: 1px 1px 4px var(--color-box-shadow);
+  border: 1px solid black;
+  box-shadow: 1px 1px 4px black;
+  background-color: #588e7f;
   overflow: hidden;
   margin: 22px;
   margin-top: 40px;
   cursor: pointer;
   /* transicion */
   transition: all 500ms;
+  display: grid;
+  grid-template-rows: 4fr 1fr 2fr;
 }
 /*efecto*/
 .cards__card:hover {
-  background-color: var(--color-bg);
-  /* color: white; */
+  background-color: var(--color-paco6);
+  border-color: #39FF14;
+  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14;
 }
 
 .cards__card:hover .card__icon{
@@ -285,15 +308,10 @@ body {
         transform: translateY(0%);
     } */
 }
-
-.cards__card:last-child {
-  /* margin-right: 0px; */
-}
-
 .cards__card .card__icon {
   display: block;
-  width: 100%; /* en la estrategia de Grid / Flex revisar este punto */
-  height: 110px;
+  width: 100%;
+  height: 160px;
   font-size: 50px;
   line-height: 90px;
   text-align: center;
@@ -317,13 +335,14 @@ body {
 
 .card__category {
   width: 100%;
-  height: 50px; /* en la estrategia de Grid / Flex revisar este punto */
+  /* height: 50px; */
   font-family: "TrebuchetMS";
-  font-size: 21px;
+  font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: var(--color-text-title);
+  color: black;
   transition: all 500ms;
+
 }
 /*efecto hover en la carta - modificamos card_category */
 .cards__card:hover .card__category{
@@ -344,8 +363,11 @@ body {
 .card__description {
   font-family: "TrebuchetMS";
   text-align: center;
-  color: var(--color-text-title);
+  color: black;
   font-size: 14px;
+  text-align:center;
+  padding-left: 5px;
+  padding-right: 5px;
   /* transición */
   transition: all 500ms;
 }
@@ -356,34 +378,155 @@ body {
 }
 @keyframes showDescription{
   from{
-      transform: translateX(-300%); /* este texto viene desde la izquierda */
+      transform: translateY(-300%); /* este texto viene desde la izquierda */
       color: var(--color-bg);
   }
   to{
-      transform: translateX(-0%);
+      transform: translateY(-0%);
       color: var(--color-text-white);
   }
 }
+/* FIN DE LAS TARJETAS */
 
-.clearfix {
-  float: none;
-  clear: both;
+.grid-container{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+/* Artículos */
+.content__articles {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: auto;
+}
+.content__articles h2 {
+  grid-column: span 2;
+  display: block;
+  width: 100%;
+  height: 75px;
+  line-height: 75px; /* centra el texto */
+  text-align: center;
+  font-family: "BebasNeue";
+  font-size: 40px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  background: url(../img/pxgray.png),var(--color-paco3);
+  box-shadow: 0px 1px 0px var(--color-box-shadow2),
+    1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2),
+    3px 4px 0px var(--color-box-shadow2);
+  margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.articles__article {
+  width: 98%;
+  max-width: 800px;
+  height: auto;
+  border: 1px solid black;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Trebuchet MS", sans-serif;
+  background: var(--color-text-white);
+  color: var(--color-bg);
+  box-shadow: 1px 1px 5px var(--color-box-shadow);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: center;
+
+  transition: border-color 0.5s ease;
+}
+.articles__article:hover{
+  border-color: #39FF14;
+  border-width: 1.5px;
+  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14;
+}
+.article__foto {
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-right: 15px;
+  
+}
+.article__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px var(--color-box-shadow);
+}
+.article__info {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 10px;
+}
+.info__titulo {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0;
+}
+.info__valoracion {
+  font-size: 1.5em;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.1s ease-in-out;
+}
+.info__descripcion {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #555;
+  text-align: justify;
+}
+.info__precio {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.articles__article h4 {
+  display: block;
+  font-size: 23px;
+  margin: 3px;
+}
+.articles__article .article__info a {
+  text-decoration: none;
+}
+.articles__article h4 a:hover {
+  text-decoration: underline;
+}
+.articles__article:hover .article__foto img{
+  animation: imageMove 4s infinite alternate linear;
+  transition: transform 0.5 ease-in-out;
+}
+@keyframes imageMove {
+  0% {
+    transform: translateX(0); 
+  }
+  50% {
+    transform: translateX((10px));
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+.articles__article:hover .article__info .info__valoracion{
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Barra lateral */
 .content__lateral {
-  width: 300px; /* en la estrategia de Grid / Flex revisar este punto */
-  min-height: 1070px; /* en la estrategia de Grid / Flex revisar este punto */
+  grid-column: 2;
   font-family: "TrebuchetMS";
-  float: right; /* en la estrategia de Grid / Flex revisar este punto */
-  margin: 20px;
+  padding: 20px;
 }
 .lateral__title {
   display: block;
   width: auto;
   height: 45px;
   line-height: 49px;
-  background: url("../img/pxgray.png"), var(--color-text-white);
+  background: url("../img/pxgray.png"), var(--color-paco3);
   box-shadow: 0px 1px 0px var(--color-box-shadow2),
     1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2),
     3px 4px 0px var(--color-box-shadow2);
@@ -395,12 +538,8 @@ body {
   margin-top: 30px;
   margin-bottom: 15px;
 }
-
-.lateral__title:first-child {
-  margin-top: 0px;
-}
 .lateral__search {
-  width: 90%; /* en la estrategia de Grid / Flex revisar este punto */
+  width: 90%; 
   height: 30px;
   margin: 10px auto;
   background-color: var(--color-text-white);
@@ -408,9 +547,8 @@ body {
   border-radius: 5px;
   box-shadow: 1px 1px 4px var(--color-background) inset;
 }
-
 .lateral__search input[type="text"] {
-  width: 85%; /* para que quepa el botón */ /* en la estrategia de Grid / Flex revisar este punto */
+  width: 85%;
   height: 30px;
   border: none;
   padding-left: 5px;
@@ -420,13 +558,11 @@ body {
   /* transición para el focus */
   transition: all 300ms;
 }
-/* obtengo foco en input[type="text"] */
 .lateral__search input[type="text"]:focus{
   font-weight: 700;
   color: var(--color-box-shadow2);
   /* background-color: var(--color-box-shadow); */
 }
-
 .lateral__search input[type="button"],
 .lateral__search input[type="text"] {
   height: 30px;
@@ -439,16 +575,15 @@ body {
   padding-left: 6px;
 }
 .aside-box {
-  width: 85%; /* en la estrategia de Grid / Flex revisar este punto */
+  width: 85%;
   height: 240px;
   margin: 0px auto;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding-top: 2px;
-  background-color: var(--color-text-white);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.3),
-    0px 1px var(--color-text-white) inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset;
+  background-color: var(--color-paco0);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.3);
+  border: black 1px solid;
 }
-
 .lateral__login input[type="email"],
 .lateral__login input[type="password"] {
   display: block;
@@ -467,7 +602,6 @@ body {
   color: var(--color-focus);
   box-shadow: 1px 1px 1px var(--color-gray) inset;
 }
-
 .lateral__login .lateral-box__user,
 .lateral__login .lateral-box__password {
   display: block;
@@ -482,20 +616,19 @@ body {
   margin-top: 22px;
   font-size: 20px;
 }
-
 .lateral__login input[type="submit"],
 .lateral__login input[type="button"],
 .lateral__login input[type="reset"],
 .lateral__login button {
   /* display: block; */
-  float: left; /* en la estrategia de Grid / Flex revisar este punto */
+  /* float: left; */
   text-align: center;
-  width: 100px; /* en la estrategia de Grid / Flex revisar este punto */
+  /* width: 100px; */
   height: 35px;
   margin-top: 20px;
   color: var(--color-text-white);
   /* Degradado desde abajo - to bottom --> hacia arriba */
-  background: linear-gradient(to bottom, #3eb8e5 0%, #2ca0ca 100%);
+  background: var(--color-paco5);
   border: 1px solid #156785;
   border-radius: 0px;
   cursor: pointer;
@@ -513,7 +646,6 @@ body {
   /* le incluyo una sombra */
   box-shadow: 2px 2px 5px var(--color-primary);
 }
-
 .lateral__login a {
   display: block;
   text-decoration: none;
@@ -526,201 +658,32 @@ body {
   color: #2f78bc;
 }
 
-.lateral__social {
-  height: 220px;
-}
-
-.lateral__social a {
-  display: block;
-  color: var(--color-bg);
-  text-decoration: none;
-  font-size: 30px;
-  margin-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.lateral__social .social__overlay {
-  display: block;
-  height: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-shadow: 0px 0px 1px var(--color-background);
-  border: 3px solid var(--color-text-white);
-  box-shadow: 0px 0px 4px var(--color-background);
-  background: #f4f7fe;
-  position: absolute;
-  padding: 5px;
-  margin-left: 70px;
-  margin-top: -52px;
-  cursor: pointer;
-  transform: translateX(-80%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
-  opacity: 0; /*lo oculto*/
-  /* transición el cambio */
-  transition: all 1s;
-}
-/* efecto hover sobre el div de lateral__social */
-.social__box:hover .social__overlay{
-/* .lateral__social div:hover .social__overlay{ */
-  transform: translateX(10%); /*lo desplazo para que cuando se lance el hover se vea el movimiento de la traslación*/
-  opacity: 1;
-}
-.lateral__social .social__overlay:hover{
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Artículos */
-.content__articles {
-  float: left; /* es necesario flotarlo puesto que he incluido el div clearfix*/
-  width: 860px; /* en la estrategia de Grid / Flex revisar este punto */
-}
-
-.content__articles h2 {
-  display: block;
-  width: 100%;
-  height: 75px;
-  line-height: 75px; /* centra el texto */
-  text-align: center;
-  font-family: "BebasNeue";
-  font-size: 40px;
-  font-weight: normal;
-  letter-spacing: 2px;
-  background: url("../img/pxgray.png"), var(--color-text-white);
-  box-shadow: 0px 1px 0px var(--color-box-shadow2),
-    1px 2px 0px var(--color-box-shadow2), 2px 3px 0px var(--color-box-shadow2),
-    3px 4px 0px var(--color-box-shadow2);
-  margin: 0px auto;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
-.articles__article{
-  width: 98%; /* en la estrategia de Grid / Flex revisar este punto */
-  height: auto;
-  border: 1px solid var(--color-background);
-  margin: 40px auto;
-  padding: 10px;
-  font-family: "TrebuchetMS";
-  background: var(--color-text-white);
-  color: var(--color-bg);
-  box-shadow: 1px 1px 2px var(--color-box-shadow);
-}
-
-.articles__article h4 {
-  display: block;
-  font-size: 23px;
-  margin: 3px;
-}
-.articles__article h4 a {
-  text-decoration: none;
-  color: var(--color-text-title);
-}
-.articles__article h4 a:hover {
-  text-decoration: underline;
-}
-
-.article__datos {
-  float: right; /* en la estrategia de Grid / Flex revisar este punto */
-  background-color: var(--color-box-shadow2);
-  color: var(--color-text-white);
-  height: 30px; /* en la estrategia de Grid / Flex revisar este punto */
-  line-height: 30px;
-  margin: -10px; /* en la estrategia de Grid / Flex revisar este punto */
-  padding: 4px;
-  font-size: 13px;
-  border-radius: 0px 0px 0px 5px; /* esquina inferior izq 5px */
-}
-.article__datos span {
-  margin: 6px;
-}
-
-.article__datos p {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 15px;
-}
-
-.articles__blog {
-  height: 100px;
-  margin-top: 60px;
-  line-height: 100px;
-  text-align: center;
-  font-family: "BebasNeue";
-  /* transición */
-  transition: all 500ms ease-in-out;
-}
-.articles__blog a {
-  font-family: "BebasNeue";
-  font-size: 40px;
-  letter-spacing: 3px;
-  color: var(--color-text-title);
-  text-decoration: none;
-  /* transición */
-  transition: all 500ms ease-in-out;
-}
-/* efecto de hover sobre articles__blog */
-.articles__blog:hover{
-  background-color: var(--color-bg);
-  border: 10px solid var(--color-primary);
-  border-radius: 240px;
-  box-shadow: 0px 0px 10px var(--color-gray);
-  animation: iluminacion 10s infinite linear;
-}
-.articles__blog:hover a{
-  color: var(--color-text-white);
-  text-shadow: 1px 1px 1px var(--color-bg),1px 2px 1px var(--color-bg),1px 3px 1px var(--color-bg),1px 4px 1px var(--color-bg),1px 5px 1px var(--color-bg),1px 6px 1px var(--color-bg);
-}
-
-@keyframes iluminacion{
-  0%{
-      border: 10px solid var(--color-primary);
-  }
-  25%{
-      border: 10px solid green;
-  }
-  50%{
-      border: 10px solid yellow;
-  }
-  75%{
-      border: 10px solid blue;
-  }
-  100%{
-      border: 10px solid var(--color-primary);
-  }
-}
-
 /* FOOTER */
 .content__footer {
   width: 100%;
-  height: 470px;
+  height: 250px;
   background-color: black;
   color: var(--color-text-white);
   overflow: hidden;
 }
+.footer__wrap{
+  display: grid;
+}
 .footer__wrap > div {
-  float: left; /* en la estrategia de Grid / Flex revisar este punto */
-  width: 25%; /* en la estrategia de Grid / Flex revisar este punto */
-  height: 370px; /* en la estrategia de Grid / Flex revisar este punto */
+  height: 370px;
   margin: 40px;
   text-align: center;
   color: var(--color-text-white);
   font-family: "TrebuchetMS";
 }
-
-.content__footer a {
-  text-decoration: none;
-  color: var(--color-primary);
-  /* transición */
-  transition: all 300ms ease-in-out;
+.footer__info{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
 }
-
-
 .footer__title {
   display: block;
   background: url("../img/pxgray.png"), var(--color-text-white);
-  height: 50px;
   letter-spacing: 2px;
   text-align: center;
   font-family: "BebasNeue";
@@ -730,51 +693,12 @@ body {
   border-radius: 5px;
   margin-bottom: 15px;
 }
-.footer__list {
-  text-align: left;
-  margin: 20px;
-  font-size: 25px;
-}
-.footer__list li {
-  margin-top: 10px;
-  padding: 5px;
-  border-bottom: 1px solid var(--color-background);
-}
-.footer__list li a {
-  display: block;
-  height: 40px;
-  /* transición */
-  transition: all 300ms ease-in-out;
-}
-/* efecto de hover sobre cada li */
-.footer__list li:hover a{
-    padding-left: 40px;
-    /* margin-left: 40px; */
-    /* text-indent: 10%; */
-    /* transform: translateX(10%); */
-    color: var(--color-text-white);
-    width: 100%;
-}
-
-.content__footer iframe {
-  width: 100%;
-  height: 300px; /* en la estrategia de Grid / Flex revisar este punto */
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 5px solid var(--color-text-white);
-  box-shadow: 0px 0px 5px var(--color-gray);
-}
-
 .content__footer img {
   margin-bottom: 15px;
 }
 .footer__browsers img {
   width: 45px;
 }
-
-/* Animaciones y Transiciones
-- Propiedad Animation
-- Keyframes
-- Transitions 
-
-Indico cada punto aplicado como efecto*/
+.footer__autor p{
+  font-size: 2em;
+}
